@@ -67,7 +67,6 @@ public class HasQuarterState implements State {
     
     public void turnCrank() 
     {
-       System.out.println("----------- The amount is "+gumballMachine.getAmt());
        if(model_no==1)
        {
            if(gumballMachine.getAmt()==25)

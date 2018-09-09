@@ -34,7 +34,6 @@ public class NoQuarterState implements State {
                 System.out.println("You inserted a quarter, insert one more quarter");
                 amt = gumballMachine.getAmt() + coin;
                 gumballMachine.setAmt(amt);
-                System.out.println("**************** The amount is "+gumballMachine.getAmt());
                 gumballMachine.setState(gumballMachine.getHasQuarterState());
             }
             else

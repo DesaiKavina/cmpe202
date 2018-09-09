@@ -1,7 +1,9 @@
 public class GumballMachine
 {
 
-    private int num_gumballs;
+    private int num_gumballs1;
+    private int num_gumballs2;
+    private int num_gumballs3;
     private boolean has_quarter;
     private boolean has_quarters;
     private boolean has_coins;
@@ -10,7 +12,9 @@ public class GumballMachine
     public GumballMachine( int size )
     {
         // initialise instance variables
-        this.num_gumballs = size;
+        this.num_gumballs1 = size;
+        this.num_gumballs2 = size;
+        this.num_gumballs3 = size;
         this.has_quarter = false;
         this.has_quarters = false;
         this.has_coins = false;
@@ -51,14 +55,13 @@ public class GumballMachine
         else
         {
             this.has_quarters = false;
-            System.out.println("Invalid input coin, please enter two quarters only");
+            System.out.println("Invalid input coin, please enter exactly two quarters only");
         }
     }
     
     // method for model 3
     public void insertCoins(int input[])
     {
-        int[] valid_coins = {5,10,25};
         int sum = 0;
         boolean flag = true;
         for(int i=0; i<input.length; i++)
@@ -79,7 +82,10 @@ public class GumballMachine
             if(sum==50)
                 this.has_coins = true;
             else
+            {
                 this.has_coins = false;
+                System.out.println("Not proper ampount, it should be exactly 50 cents.");
+            }
         }
     }
     
@@ -88,54 +94,49 @@ public class GumballMachine
     {
         if ( this.has_quarter )
         {
-            if ( this.num_gumballs > 0 )
+            if ( this.num_gumballs1 > 0 )
             {
-                this.num_gumballs-- ;
+                this.num_gumballs1-- ;
                 this.has_quarter = false ;
                 System.out.println( "Thanks for your quarter.  Gumball Ejected!" ) ;
             }
             else
             {
-                System.out.println( "No More Gumballs!  Sorry, can't return your quarter." ) ;
+                System.out.println( "No More Gumballs in machine1. Sorry, can't return your quarter." ) ;
+                this.has_quarter = false;
             }
-        }
-        else 
+        }       
+        else if ( this.has_quarters )
         {
-            //System.out.println( "Please insert a quarter" ) ;
-        }        
-        if ( this.has_quarters )
-        {
-            if ( this.num_gumballs > 0 )
+            if ( this.num_gumballs2 > 0 )
             {
-                this.num_gumballs-- ;
+                this.num_gumballs2-- ;
                 this.has_quarters = false ;
                 System.out.println( "Thanks for your quarters.  Gumball Ejected!" ) ;
             }
             else
             {
-                System.out.println( "No More Gumballs!  Sorry, can't return your quarters." ) ;
+                System.out.println( "No More Gumballs in machine2. Sorry, can't return your quarters." ) ;
+                this.has_quarters = false;
             }
-        }
-        else 
+        } 
+        else if ( this.has_coins )
         {
-            //System.out.println( "Please insert two quarters" ) ;
-        }  
-        if ( this.has_coins )
-        {
-            if ( this.num_gumballs > 0 )
+            if ( this.num_gumballs3 > 0 )
             {
-                this.num_gumballs-- ;
+                this.num_gumballs3-- ;
                 this.has_coins = false ;
                 System.out.println( "Thanks for your coins.  Gumball Ejected!" ) ;
             }
             else
             {
-                System.out.println( "No More Gumballs!  Sorry, can't return your coins." ) ;
+                System.out.println( "No More Gumballs in machine3. Sorry, can't return your coins." ) ;
+                this.has_coins = false;
             }
         }
         else 
         {
-            //System.out.println( "Please insert coins" ) ;
-        }        
+            System.out.println( "Please insert proper coins first") ;
+        }   
     }
 }
