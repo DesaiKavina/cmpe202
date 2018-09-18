@@ -1,4 +1,5 @@
-public class NoQuarterState implements State {
+public class NoQuarterState implements State 
+{
     GumballMachine gumballMachine;
     int model_no;
     int amt;
@@ -10,7 +11,8 @@ public class NoQuarterState implements State {
         this.amt = gumballMachine.amt;
     }
  
-    public void insertQuarter(int coin) {
+    public void insertQuarter(int coin) 
+    {
         gumballMachine.setAmt(0);
         if(model_no==1)
         {
