@@ -8,7 +8,7 @@ public class Leaf implements Component {
         description = d ;
     }
     
-    public void printDescription() {
+    public void printDescription(String ReceiptType) {
         System.out.println( " " + description + " ") ;
     }
     

@@ -5,7 +5,7 @@ public class Bacon extends Leaf
         super(description);
     }
     
-    public void printDescription(){
+    public void printDescription(String ReceiptType){
         System.out.println(" {{{{ " + description + " }}}} ");
     }
 }

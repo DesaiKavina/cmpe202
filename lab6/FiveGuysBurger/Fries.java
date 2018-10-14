@@ -29,7 +29,16 @@ public class Fries extends Leaf
         return this.amt;
     }
     
-    public void printDescription(){
-        System.out.println(description);
+    public void printDescription(String ReceiptType){
+        if(ReceiptType=="Customer Receipt")
+        {
+            DecimalFormat fmt = new DecimalFormat("0.00");
+            String printDesc = description + "                 $" + fmt.format(setPrice());
+            System.out.println(printDesc);
+        }
+        else
+        {
+            System.out.println(description);
+        }
     } 
 }
