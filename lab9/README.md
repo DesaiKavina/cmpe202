@@ -15,7 +15,7 @@ In the lambda way of writing the code for the observer pattern, concrete impleme
 
 ## Strategy Design pattern
 
-- Without lambda (original implementation of Observer pattern)
+- Without lambda (original implementation of Strategy pattern)
 
 The original implementation of strategy pattern includes one interface Istrategy which has the method calculateTax(). There are three different strategies for calculating the Income tax : PersonalTax, PersonalTaxWithPenalty and PersonalTaxWithRebate. There is another client class TaxStrategyMain where all the three strategy classes are instantiated and their calculateTax() method is called one by one.
 
