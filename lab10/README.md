@@ -10,12 +10,16 @@ On the other hand, by using Feature IDE AsectJ, the varieties of the models of t
 
 (1) Crank model – 25 cents
 
+![alt text]( https://github.com/DesaiKavina/cmpe202/blob/master/lab10/screenshots/CrankModel_25Cents.png)
 
 
 (2) Crank model – 50 cents
 
+![alt text]( https://github.com/DesaiKavina/cmpe202/blob/master/lab10/screenshots/CrankModel_50Cents.png)
 
 
 (3) Slot model – 50 cents
+
+![alt text]( https://github.com/DesaiKavina/cmpe202/blob/master/lab10/screenshots/SlotModel_50Cents.png)
 
 
