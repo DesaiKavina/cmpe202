@@ -1,0 +1,62 @@
+# CMPE202 Starbucks Mobile App
+
+## Design notes
+
+## Proposed approach
+
+(1) First of all, I started with setting all the **screenflows**. I included the touch(x,y) methods in all the pages to navigate within different screens by touch methods. I also set the menu items (A, B, C, D, E) to navigate between different menu items of the starbucks app. Menu uses the Command pattern. I also set the logic for ‘next’ and ‘prev’ entered for the AddCard screen.
+
+
+(2) After that, I fixed the logic of **InvalidPin**. The logic is set in the following way : 
+
+- A new authEvent ( authEvent1() )is created in the AppAuthProxy.java which will be notified when the authentication fails after entering four digits.
+- The method NotifyObservers() in the PinEntryMachine.java calls the authEvent in the AppAuthProxy.java when the pin is not equal to “1234”
+- This new authEvent will set a string message “Invalid pin” which will be displayed in screenContents() method of AppAuthProxy
+
+
+(3) Next, I came up with the logic for **AddCard**
+
+- AddCard.java extends Screen.java
+- AddCard makes use of Chain of responsibility (COR) and adds AddCardCardNumber and AddCardCardPin
+- AddCard also sets AddCardCardNumber and AddCardCardPin as their observers which will be notified on the appropriate touch events.
+- If touch event on AddCard is either (1,2), (2,2) or (3,2) then the AddCardCardNumber observer is notified
+- If touch event on AddCard is (2,3) then the AddCardCardPin observer is notified
+- AddCard uses the display() method of its parent class Screen which uses the Composite design patterns, this will call the display method of all its components(AddCardCardNumber, AddCardCardPin and KeyPad) through a for loop.
+- The logic is set in such a way that maximum 9 digits can only be entered for card number and a maximum of 3 digits can only be entered for card pin.
+- If the user enters exactly 9 digits for card number and exactly 3 digits for card pin and after that presses ‘next’, then MyCards screen is displayed with the balance of $20
+- If the user enters ‘next’ without properly entering the digits of card number and card pin, then both the fields card number and card pin will be reset to empty and it will again wait for the user to enter the digits again.
+- On pressing ‘prev’ on the AddCard page, the screen goes back to the Settings screen.
+
+
+(4) After that, I set the logic for **Payments**
+
+- Initially all users will have a balance of $20
+- One can enter touch(3,3) on the MyCards screen and then navigate to MyCardsPay screen
+- On MyCardsPay screen one enter touch(2,2) to do the payments. Every time touch(2,2) is entered $1.50 is deducted from the available balance.
+- I have made setter and getter method in MyCards.java. 
+- Whenever there needs to be a deduction of $1.50, MyCardsPay will call the setBalance() method of MyCards and update the balance and that updated balance will be displayed on MyCards screen.
+
+
+## UML class diagram 
+
+I have made the UML class diagram of my code. I have included those classes that are relevant to the process of Adding a new card
+
+![alt text]( https://github.com/nguyensjsu/cmpe202-DesaiKavina/blob/master/UML_ClassDiagram_StarbuckProject.png)
+
+
+## UML Sequence diagram
+
+In the sequence diagram, I have started the flow from the Frame where all my touch(x,y) and display() logic is set. After the touch event is called, the method app.screenContents() will display the output. I have only shown the whole flow of displaying the change after the touch(x,y) only once. I have avoided to show the flow of app.screenContents method after every call to maintain the simplicity of the diagram.
+
+Also, I have not always included the calls like PadLines(), PadSpaces(), countLines(), because these methods are called many times and they unnecessarily complicate the sequence diagram.
+
+![alt text]( https://github.com/nguyensjsu/cmpe202-DesaiKavina/blob/master/UML_SequenceDiagram_StarbucksProjects.png)
+
+
+## Code smells
+
+I have not been able to clear all the code smells because some smells such as LongMethod and LargeClass involves creating multiple methods to eliminate a LongMethod and that would unnecessarily complicate the flow and deteriorate the readability of the present code. 
+
+
+
+
